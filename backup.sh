@@ -1,5 +1,14 @@
 #!/bin/bash
+
+# Create backups directory if it doesn't exist
 mkdir -p /app/backups
-cp /app/data/notes.db /app/backups/notes_backup_$(date +%F_%H-%M-%S).db
-echo "Backup created at /app/backups/notes_backup_$(date +%F_%H-%M-%S).db"
+
+# Define timestamp (make sure no extra spaces!)
+timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
+
+# Copy the database file with timestamp
+cp /app/notes.db /app/backups/notes_backup_"$timestamp".db
+
+# Log output
+echo "Backup created at /app/backups/notes_backup_$timestamp.db"
 
